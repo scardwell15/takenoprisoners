@@ -1,0 +1,17 @@
+{
+    "id":"presmattdamon_takenoprisoners", # For the convenience of troubleshooters, include your name and the mod name, not just an acronym.
+	"name":"Take No Prisoners", # Displayed to the player
+	"author":"President Matt Damon",
+    "utility":"false",
+	"version":"0.12.0",
+	"description":"Starsector IntelliJ template.",
+    "gameVersion": "0.95.1a-RC6", 
+  	"jars":["jars/TakeNoPrisoners.jar"],
+  	"modPlugin":"captureofficers.CaptureOfficers",
+	  	"dependencies": [
+        {
+            "id": "MagicLib",
+            "name": "MagicLib"
+        }
+    ],
+}

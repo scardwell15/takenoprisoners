@@ -1,0 +1,42 @@
+{
+    "TakeNoPrisoners": {
+        #setting this too high may permanently brick your save at some point in the future
+        #if you then ping me about your save being bricked, you get added to the wall of shame
+        "maxPrisoners": 15,
+    
+        #wall of shame:
+        #tim (lmao)
+
+        #valid values are NONE and OFFICERS_ONLY, which blocks fleet commanders.
+        "factionCapturability": {
+            "derelict": "NONE",
+            "remnant": "NONE",
+            "omega": "NONE",
+            "blade_breakers": "NONE",
+            "mess": "NONE",
+            "mess_remnant": "NONE",
+            "hmi_nightmare": "NONE",
+            "domres": "NONE",
+            "agni": "NONE",
+            "sotf_dustkeepers": "NONE",
+            "sotf_dustkeepers_proxies": "NONE",
+            "sotf_sierra_faction": "NONE",
+            "sotf_taken": "NONE",
+            "semiCivilizedRemnants": "NONE",
+            "bladeofconviction": "NONE",
+            "tahlan_legioinfernalis": "OFFICERS_ONLY",
+            "unknown": "OFFICERS_ONLY",
+            "indevo_derelict": "NONE"
+        },
+        #factions that do not accept ransoms
+        "factionRansomBlacklist": [
+            "luddic_path",
+            "pirates",
+            "pirate",
+            "cabal",
+            "gmda",
+            "gmda_patrol"
+        ],
+        "baseCaptureChance": 0.5
+    }
+}
