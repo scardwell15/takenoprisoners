@@ -34,6 +34,6 @@ public class COFF_CalcRansomPrice extends BaseCommandPlugin {
 
     //vengeful faction costs 5x more than cooperative
     private float getCreditCost(PersonAPI person) {
-        return person.getStats().getLevel() * 750f * -1f;
+        return person.getStats().getLevel() * 750f;
     }
 }

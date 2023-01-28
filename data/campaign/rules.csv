@@ -552,7 +552,7 @@ $coff_desiresIgnored","FireBest COFF_RemoveActivePerson","The prisoner makes the
 LeagueSnobbish1Ransom,DialogOptionSelected,"$option == LeagueSnobbish1Ransom","AddRemoveCommodity credits $coff_ransomprice true
 FireBest COFF_RemoveActivePerson","$HeOrShe is escorted to the shuttle. $HeOrShe gives you one last look and says ""Here's to the stars, captain.""
 
-As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.",,
+As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.","defaultLeave:Leave.",
 LeagueSnobbish1Release,DialogOptionSelected,"$option == LeagueSnobbish1Release","FireBest COFF_RemoveActivePerson
 AdjustRep $personFaction.id INHOSPITABLE 3","The prisoner makes their way to the shuttle and gives you a last appraising glance.
 

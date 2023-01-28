@@ -27,7 +27,7 @@ public class RansomDefinition extends StepExecutor {
     public Set<Step> getSteps(PersonAPI person) {
         Set<Step> definition = new LinkedHashSet<>();
         definition.add(new NearFactionMarket());
-        definition.add(new TakeCredits(Strings.RANSOM_PRICE_MEMKEY, getDefaultCreditGain(person)));
+        definition.add(new TakeCredits(Strings.RANSOM_PRICE_MEMKEY, getDefaultCreditGain(person), true));
         definition.add(new RemovePerson());
 
         return definition;
