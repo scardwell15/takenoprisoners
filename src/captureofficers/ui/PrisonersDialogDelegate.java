@@ -16,6 +16,8 @@ import com.fs.starfarer.api.characters.SkillSpecAPI;
 import com.fs.starfarer.api.graphics.SpriteAPI;
 import com.fs.starfarer.api.ui.*;
 import com.fs.starfarer.api.util.Misc;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 import java.awt.*;
 import java.util.List;
@@ -35,6 +37,7 @@ public class PrisonersDialogDelegate implements CustomDialogDelegate {
     protected final List<PersonAPI> members;
     protected final List<ButtonData> buttons = new ArrayList<>();
 
+    @Getter
     protected final InteractionDialogAPI dialog;
     protected final PrisonersDialogPanelPlugin plugin;
     protected CustomPanelAPI panel = null;
@@ -315,12 +318,12 @@ public class PrisonersDialogDelegate implements CustomDialogDelegate {
 
     public Set<ActionDefinition> getActions(PersonAPI person) {
         Set<ActionDefinition> defs = new LinkedHashSet<>();
-        defs.add(new TalkDefinition());
-        defs.add(new HireDefinition());
-        defs.add(new BribeDefinition());
-        defs.add(new RansomDefinition());
-        defs.add(new ReleaseDefinition());
-        defs.add(new ExecuteDefinition());
+        defs.add(new TalkDefinition(dialog));
+        defs.add(new HireDefinition(dialog));
+        defs.add(new BribeDefinition(dialog));
+        defs.add(new RansomDefinition(dialog));
+        defs.add(new ReleaseDefinition(dialog));
+        defs.add(new ExecuteDefinition(dialog));
 
         Iterator<ActionDefinition> defIterator = defs.iterator();
         while (defIterator.hasNext()) {
@@ -354,7 +357,11 @@ public class PrisonersDialogDelegate implements CustomDialogDelegate {
         String getAfterClickDisplayText(PersonAPI person);
     }
 
+    @RequiredArgsConstructor
     public static abstract class ActionDefinitionImpl implements ActionDefinition {
+        protected final InteractionDialogAPI dialog;
+
+
         @Override
         public Color getAfterClickRowColor(PersonAPI person) {
             return new Color(200, 200, 200, 200);

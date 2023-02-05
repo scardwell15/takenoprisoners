@@ -12,11 +12,11 @@ public class Settings {
 
     public static boolean isFactionCapturable(String factionId) {
         factionId = factionId.toLowerCase();
-        return !factionCapturability.containsKey(factionId) || factionCapturability.get(factionId).equals(Capturability.OFFICERS_ONLY);
+        return factionCapturability.containsKey(factionId);
     }
 
     public static boolean isCommanderCapturable(String factionId) {
-        return !factionCapturability.containsKey(factionId);
+        return factionCapturability.containsKey(factionId) && factionCapturability.get(factionId).equals(Capturability.ALL);
     }
 
     public static boolean doesFactionRansom(String factionId) {

@@ -2,6 +2,7 @@ package captureofficers.campaign.actions.definitions;
 
 import captureofficers.campaign.actions.definitions.steps.RemovePerson;
 import captureofficers.utils.StringUtils;
+import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.ui.ButtonAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -10,6 +11,10 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class ReleaseDefinition extends StepExecutor {
+
+    public ReleaseDefinition(InteractionDialogAPI dialog) {
+        super(dialog);
+    }
 
     @Override
     public String getId() {

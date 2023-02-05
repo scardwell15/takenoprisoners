@@ -26,6 +26,10 @@ import java.util.*;
 public class TalkDefinition extends PrisonersDialogDelegate.ActionDefinitionImpl {
     private Logger log = Logger.getLogger(TalkDefinition.class);
 
+    public TalkDefinition(InteractionDialogAPI dialog) {
+        super(dialog);
+    }
+
     @Override
     public String getId() {
         return "talk";

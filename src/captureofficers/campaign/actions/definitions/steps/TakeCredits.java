@@ -54,7 +54,7 @@ public class TakeCredits implements StepExecutor.Step {
 
     public int getCredits(PersonAPI person) {
         if (person.getMemoryWithoutUpdate().contains(this.memKey)) {
-            return (int) person.getMemoryWithoutUpdate().get(this.memKey);
+            return Integer.parseInt(String.valueOf(person.getMemoryWithoutUpdate().get(this.memKey)));
         } else if (defaultCredits != 0) {
             return defaultCredits;
         }

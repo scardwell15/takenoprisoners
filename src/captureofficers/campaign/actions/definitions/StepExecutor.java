@@ -3,6 +3,7 @@ package captureofficers.campaign.actions.definitions;
 import captureofficers.campaign.actions.definitions.steps.HirePerson;
 import captureofficers.campaign.actions.definitions.steps.RemovePerson;
 import captureofficers.ui.PrisonersDialogDelegate;
+import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 
 import java.util.LinkedHashSet;
@@ -12,6 +13,10 @@ import java.util.Set;
  * Easily execute a series of pre-defined actions.
  */
 public abstract class StepExecutor extends PrisonersDialogDelegate.ActionDefinitionImpl {
+    public StepExecutor(InteractionDialogAPI dialog) {
+        super(dialog);
+    }
+
     public abstract Set<Step> getSteps(PersonAPI person);
 
     @Override

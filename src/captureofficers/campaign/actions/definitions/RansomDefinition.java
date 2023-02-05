@@ -7,6 +7,7 @@ import captureofficers.utils.AllowedActions;
 import captureofficers.utils.Settings;
 import captureofficers.utils.StringUtils;
 import captureofficers.utils.Strings;
+import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.ui.ButtonAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
@@ -17,6 +18,10 @@ import java.util.Set;
 
 public class RansomDefinition extends StepExecutor {
     private static final float PER_LEVEL_CREDITS = 750f;
+
+    public RansomDefinition(InteractionDialogAPI dialog) {
+        super(dialog);
+    }
 
     @Override
     public String getId() {

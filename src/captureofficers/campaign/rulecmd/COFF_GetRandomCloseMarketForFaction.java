@@ -17,14 +17,7 @@ public class COFF_GetRandomCloseMarketForFaction extends BaseCommandPlugin {
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
         String factionId = params.get(0).getString(memoryMap);
 
-        WeightedRandomPicker<MarketAPI> marketPicker = new WeightedRandomPicker<>();
-        for (MarketAPI market : Misc.getFactionMarkets(factionId)) {
-            if (market.isInvalidMissionTarget()) continue;
-            float dist = Math.max(Misc.getDistanceToPlayerLY(market.getLocationInHyperspace()), 0.25f);
-            marketPicker.add(market, 1000 / (dist * dist));
-        }
-
-        MarketAPI pickedMarket = marketPicker.pick();
+        MarketAPI pickedMarket = get(factionId);
         if (pickedMarket != null) {
             float dist = Misc.getDistanceToPlayerLY(pickedMarket.getLocationInHyperspace());
             memoryMap.get(MemKeys.LOCAL).set(Strings.MARKET_MEMKEY, pickedMarket.getId());
@@ -35,5 +28,17 @@ public class COFF_GetRandomCloseMarketForFaction extends BaseCommandPlugin {
             return true;
         }
         return false;
+    }
+
+    public static MarketAPI get(String factionId) {
+        WeightedRandomPicker<MarketAPI> marketPicker = new WeightedRandomPicker<>();
+        for (MarketAPI market : Misc.getFactionMarkets(factionId)) {
+            if (market.isInvalidMissionTarget()) continue;
+            float dist = Math.max(Misc.getDistanceToPlayerLY(market.getLocationInHyperspace()), 0.25f);
+            marketPicker.add(market, 1000 / (dist * dist));
+        }
+
+        MarketAPI pickedMarket = marketPicker.pick();
+        return pickedMarket;
     }
 }

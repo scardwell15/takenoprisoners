@@ -1,7 +1,7 @@
 package captureofficers.campaign.rulecmd;
 
-import captureofficers.campaign.actions.definitions.HireDefinition;
-import captureofficers.ui.PrisonersDialogDelegate;
+import captureofficers.campaign.actions.definitions.ExecuteDefinition;
+import captureofficers.campaign.actions.definitions.ReleaseDefinition;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;
@@ -12,11 +12,11 @@ import com.fs.starfarer.api.util.Misc;
 import java.util.List;
 import java.util.Map;
 
-public class COFF_HireActivePerson extends BaseCommandPlugin {
+public class COFF_ExecuteActivePerson extends BaseCommandPlugin {
     @Override
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
         PersonAPI person = Global.getSector().getPlayerFleet().getActivePerson();
-        new HireDefinition(dialog).execute(person);
+        new ExecuteDefinition(dialog).execute(person);
 
         return true;
     }
