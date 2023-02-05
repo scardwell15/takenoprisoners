@@ -1,3 +1,2 @@
 alias,command
-et_ruc,et_removecosts
-et_duc,et_resetcosts
+tnp_add,tnp_addprisoner

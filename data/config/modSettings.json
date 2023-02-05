@@ -7,27 +7,52 @@
         #wall of shame:
         #tim (lmao)
 
-        #valid values are NONE and OFFICERS_ONLY, which blocks fleet commanders.
+        #valid values are ALL and OFFICERS_ONLY, which blocks fleet commanders.
         "factionCapturability": {
-            "derelict": "NONE",
-            "remnant": "NONE",
-            "omega": "NONE",
-            "blade_breakers": "NONE",
-            "mess": "NONE",
-            "mess_remnant": "NONE",
-            "hmi_nightmare": "NONE",
-            "domres": "NONE",
-            "agni": "NONE",
-            "sotf_dustkeepers": "NONE",
-            "sotf_dustkeepers_proxies": "NONE",
-            "sotf_sierra_faction": "NONE",
-            "sotf_taken": "NONE",
-            "semiCivilizedRemnants": "NONE",
-            "bladeofconviction": "NONE",
-            "immortallight": "NONE",
+            "tritachyon": "ALL",
+            "hegemony": "ALL",
+            "ironshell": "ALL",
+            "persean_league": "ALL",
+            "pirates": "ALL",
+            "independent": "ALL",
+            "sindrian_diktat": "ALL",
+            "lions_guard": "ALL",
             "tahlan_legioinfernalis": "OFFICERS_ONLY",
             "unknown": "OFFICERS_ONLY",
-            "indevo_derelict": "NONE"
+            "luddic_church": "ALL",
+            "luddic_path": "ALL",
+            "approlight": "ALL",
+            "almighty_dollar": "ALL",
+            "ashen_keepers": "ALL",
+            "communist_clouds": "ALL",
+            "hvb_hostile": "ALL",
+            "wanted": "ALL",
+            "science_fuckers": "ALL",
+            "warhawk_republic": "ALL",
+            "vic": "ALL",
+            "Goat_Aviation_Bureau": "ALL",
+            "mayasura": "ALL",
+            "mayasuran_guard": "ALL",
+            "orks": "ALL",
+            "roider": "ALL",
+            "scy": "ALL",
+            "diable_avionics": "ALL",
+            "ora": "ALL",
+            "kadur_remnant": "ALL",
+            "kadur_theocracy": "ALL",
+            "qamar_insurgency": "ALL",
+            "gmda": "ALL",
+            "MVS": "ALL",
+            "kyeltziv": "ALL",
+            "apex_design": "ALL",
+            "sikr_saniris": "ALL",
+            "pearson_exotronics": "ALL",
+            "brighton": "ALL",
+            "hmi": "ALL",
+            "dassault_mikoyan": "ALL",
+            "blackrock_driveyards": "ALL",
+            "interstellarimperium": "ALL",
+            "neutrinocorp": "ALL"
         },
         #factions that do not accept ransoms
         "factionRansomBlacklist": [
@@ -36,7 +61,10 @@
             "pirate",
             "cabal",
             "gmda",
-            "gmda_patrol"
+            "gmda_patrol",
+            "orks",
+            "wanted",
+            "hvb_hostile"
         ],
         "baseCaptureChance": 0.5
     }

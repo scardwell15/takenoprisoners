@@ -12,5 +12,6 @@
     <orderEntry type="library" name="projectlombok.lombok" level="application" />
     <orderEntry type="library" name="MagicLib" level="application" />
     <orderEntry type="library" name="lw_Console" level="application" />
+    <orderEntry type="library" name="LazyLib" level="application" />
   </component>
 </module>
