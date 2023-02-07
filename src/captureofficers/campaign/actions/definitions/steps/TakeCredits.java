@@ -1,6 +1,7 @@
 package captureofficers.campaign.actions.definitions.steps;
 
 import captureofficers.campaign.actions.definitions.StepExecutor;
+import captureofficers.utils.Strings;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.characters.PersonAPI;
 
@@ -54,7 +55,7 @@ public class TakeCredits implements StepExecutor.Step {
 
     public int getCredits(PersonAPI person) {
         if (person.getMemoryWithoutUpdate().contains(this.memKey)) {
-            return Integer.parseInt(String.valueOf(person.getMemoryWithoutUpdate().get(this.memKey)));
+            return ((Number) person.getMemoryWithoutUpdate().get(this.memKey)).intValue();
         } else if (defaultCredits != 0) {
             return defaultCredits;
         }
