@@ -1,7 +1,6 @@
 package captureofficers.campaign.actions.definitions.steps;
 
 import captureofficers.campaign.actions.definitions.StepExecutor;
-import captureofficers.utils.Strings;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.characters.PersonAPI;
 

@@ -1,11 +1,9 @@
 package captureofficers.utils;
 
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.characters.LevelBasedEffect;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONWriter;
 
 import java.io.IOException;
 import java.util.ArrayList;

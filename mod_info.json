@@ -3,15 +3,19 @@
 	"name":"Take No Prisoners", # Displayed to the player
 	"author":"President Matt Damon",
     "utility":"false",
-	"version":"0.13.1",
-	"description":"Starsector IntelliJ template.",
-    "gameVersion": "0.95.1a-RC6", 
+	"version":"0.14.0",
+	"description":"Capture officers and negotiate",
+    "gameVersion": "0.95.1a-RC6",
   	"jars":["jars/TakeNoPrisoners.jar"],
   	"modPlugin":"captureofficers.CaptureOfficers",
-	  	"dependencies": [
+	"dependencies": [
         {
             "id": "MagicLib",
             "name": "MagicLib"
-        }
+        },
+		{
+			"id": "lw_lazylib",
+			"name": "LazyLib"
+		}
     ],
 }

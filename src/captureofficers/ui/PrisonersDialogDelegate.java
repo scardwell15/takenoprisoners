@@ -2,7 +2,6 @@ package captureofficers.ui;
 
 import captureofficers.CaptureOfficers;
 import captureofficers.campaign.actions.definitions.*;
-import captureofficers.campaign.actions.definitions.steps.RemovePerson;
 import captureofficers.utils.AllowedActions;
 import captureofficers.utils.StringUtils;
 import com.fs.starfarer.api.Global;

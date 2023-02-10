@@ -25,7 +25,7 @@ public class ExecuteDefinition extends StepExecutor {
     @Override
     public Set<Step> getSteps(PersonAPI person) {
         Set<Step> definition = new LinkedHashSet<>();
-        definition.add(new FireAllTrigger(dialog, "COFF_Executed"));
+        definition.add(new FireAllTrigger(dialog, "COFF_ExecutedPrisoner"));
         definition.add(new RemovePerson());
         return definition;
     }

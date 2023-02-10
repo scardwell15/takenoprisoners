@@ -15,7 +15,7 @@ import java.util.Random;
 public class AddPrisoner implements BaseCommand {
     @Override
     public CommandResult runCommand(String argsString, CommandContext context) {
-        if ( context.isInCampaign() )
+        if (context.isInCampaign())
         {
             String[] args = argsString.split(" ");
             String factionId = args[0];

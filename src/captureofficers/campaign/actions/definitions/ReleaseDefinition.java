@@ -1,5 +1,6 @@
 package captureofficers.campaign.actions.definitions;
 
+import captureofficers.campaign.actions.definitions.steps.FireAllTrigger;
 import captureofficers.campaign.actions.definitions.steps.RemovePerson;
 import captureofficers.utils.StringUtils;
 import com.fs.starfarer.api.campaign.InteractionDialogAPI;
@@ -24,6 +25,7 @@ public class ReleaseDefinition extends StepExecutor {
     @Override
     public Set<Step> getSteps(PersonAPI person) {
         Set<Step> definition = new LinkedHashSet<>();
+        definition.add(new FireAllTrigger(dialog, "COFF_ReleasedPrisoner"));
         definition.add(new RemovePerson());
         return definition;
     }

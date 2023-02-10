@@ -9,9 +9,10 @@ FireBest StartPrisonerDialog",,,"Pick best prisoner dialog and run it."
 COFF_OpenPrisonerDialog,OpenInteractionDialog,"$coff_isprisoner score:10000
 $coff_dialogpicked","FireBest StartPrisonerDialog",,,
 COFF_HireActivePerson,COFF_HireActivePerson,,"COFF_HireActivePerson",,,"Hires the active person as an officer. Calls the trigger COFF_HiredPrisoner"
-COFF_RemoveActivePerson,COFF_RemoveActivePerson,,"COFF_RemoveActivePerson",,,"Removes the active person from the ""prison"". Calls the trigger COFF_ReleasedPrisoner"
+COFF_RemoveActivePerson,COFF_RemoveActivePerson,,"COFF_RemoveActivePerson",,,"Removes the active person from the ""prison""."
 COFF_HireAndRemoveActivePerson,COFF_HireAndRemoveActivePerson,,"COFF_HireAndRemoveActivePerson",,,"Hires the active person as an officer, and removes them from the ""prison"". Calls the trigger COFF_HiredPrisoner"
 COFF_ExecuteActivePerson,COFF_ExecuteActivePerson,,"COFF_ExecuteActivePerson",,,"Removes the active person from the ""prison"". Calls the trigger COFF_ExecutedPrisoner"
+COFF_RemoveActivePerson,COFF_RemoveActivePerson,,"COFF_RemoveActivePerson",,,"Removes the active person from the ""prison"". Calls the trigger COFF_ReleasedPrisoner"
 ,,,,,,
 # Any Faction,,,,,,
 ,,,,,,
@@ -44,10 +45,11 @@ FireBest COFF_HireActivePerson","A simple flick of your Tri-Pad is all it takes 
 Default1PrisonerRelease,DialogOptionSelected,"$option == Default1PrisonerRelease","FireBest COFF_RemoveActivePerson","The prisoner almost looks smug as $heOrShe is escorted to the shuttle.
 
 ""Be seeing you again soon, $player.name. Real soon.""","defaultLeave:Leave.",
-Default1PrisonerExecute,DialogOptionSelected,"$option == Default1PrisonerExecute","FireBest COFF_RemoveActivePerson
+Default1PrisonerExecute,DialogOptionSelected,"$option == Default1PrisonerExecute","FireBest COFF_ExecuteeActivePerson
 AdjustRep $personFaction.id VENGEFUL -8","The prisoner is terrified for a brief moment, but that moment is all it takes for the life to leave $hisOrHer eyes.","defaultLeave:Leave.",
 Default1PrisonerRansom,DialogOptionSelected,"$option == Default1PrisonerRansom","FireBest COFF_RemoveActivePerson
 AddRemoveCommodity credits $coff_ransomprice true","The prisoner is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping notifying you of your ransom pay.","defaultLeave:Good.",
+Default1PrisonerExecuted,COFF_ExecutedPrisoner,"$coff_dialogtrigger == Default1", "AdjustRep $personFaction.id VENGEFUL -8",,,
 "#END Prisoner 1",,,,,,
 "#END Any Faction",,,,,,
 ,,,,,,
@@ -75,11 +77,11 @@ You apologize for invoking His great name, and explain to $himOrHer that your mi
 You further explain that being in this very position in your prison to hear these words is evidence that Ludd calls upon $himOrHer to join you on your noble mission.
 
 The Pather nearly jumps at the opportunity. You leave the prison satisfied, overhearing your security officer make it clear to $himOrHer that $heOrShe cannot let anyone else know of the mission, lest a heretic learn of the secret.","10:defaultLeave:Leave",
-PatherFanatical1PrisonerRelease,DialogOptionSelected,"$option == PatherFanatical1Release","FireBest COFF_RemoveActivePerson","The prisoner shoots you one last rapturous look as $heOrShe is about to enter the shuttle.
+PatherFanatical1PrisonerRelease,DialogOptionSelected,"$option == PatherFanatical1Release","FireBest COFF_ReleaseActivePerson","The prisoner shoots you one last rapturous look as $heOrShe is about to enter the shuttle.
 
 ""Ludd's Light be upon ye, heretic.""","defaultLeave:Leave.",
-PatherFanatical1PrisonerExecute,DialogOptionSelected,"$option == PatherFanatical1Execute","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id VENGEFUL -8","The prisoner seems aware of the fate that befalls him, and doesn't let you see the light leave $hisOrHer eyes.","defaultLeave:Leave.",
+PatherFanatical1PrisonerExecute,DialogOptionSelected,"$option == PatherFanatical1Execute","FireBest COFF_ExecuteActivePerson","The prisoner seems aware of the fate that befalls him, and doesn't let you see the light leave $hisOrHer eyes.","defaultLeave:Leave.",
+PatherFanatical1PrisonerExecuted,COFF_ExecutedPrisoner,"$coff_dialogtrigger == PatherFanatical1", "AdjustRep $personFaction.id VENGEFUL -8",,,
 "#END Pious",,,,,,
 "#END Luddic Path",,,,,,
 ,,,,,,
@@ -135,14 +137,14 @@ FireAll PopulatePrisonerOptions_PirateApologetic1PostFamily","$HeOrShe looks up 
 PirateApologetic1FamilyText,PopulatePrisonerOptions_PirateApologetic1PostFamily,,"FireBest COFF_RemoveActivePerson","The prisoner's family is brought to them, together once again. $name says that $heOrShe cannot thank you enough for what you did for $himOrHer today.","10:defaultLeave:Leave.",
 PirateApologetic1HireOption,PopulatePrisonerOptions_PirateApologetic1PostFamily,"COFF_HasTooManyOfficers PirateApologetic1Hire",,,"1:PirateApologetic1Hire:Offer to hire $himOrHer.",
 PirateApologetic1Hire,DialogOptionSelected,"$option == PirateApologetic1Hire","FireBest COFF_HireActivePerson","$name gladly accepts your offer. $HeOrShe spends the night with $hisOrHer family before they all say their goodbyes, with a promise made to make their lives happy using the generous salary that you have offered them.","defaultLeave:Good.",
-PirateApologetic1Release,DialogOptionSelected,"$option == PirateApologetic1Release","FireBest COFF_RemoveActivePerson","The prisoner looks up at you with wet, beady eyes as you tell $himOrHer that you'll be releasing them. A faint glimmer of hope appears.
+PirateApologetic1Release,DialogOptionSelected,"$option == PirateApologetic1Release","FireBest COFF_ReleaseActivePerson","The prisoner looks up at you with wet, beady eyes as you tell $himOrHer that you'll be releasing them. A faint glimmer of hope appears.
 
 They leave without a thanks.","defaultLeave:Leave.",
 PirateApologetic1ReleaseAfterPrying,DialogOptionSelected,"$option == PirateApologetic1Release
-$coff_pried","FireBest COFF_RemoveActivePerson","The prisoner looks up at you with wet, beady eyes as you tell $himOrHer that you'll be releasing them. A glimmer of hope appears, a second chance given to save their family.
+$coff_pried","FireBest COFF_ReleaseActivePerson","The prisoner looks up at you with wet, beady eyes as you tell $himOrHer that you'll be releasing them. A glimmer of hope appears, a second chance given to save their family.
 
 They leave in a hurry, thanking you profusely.","defaultLeave:Leave.",
-PirateApologetic1Execute,DialogOptionSelected,"$option == PirateApologetic1Execute","FireBest COFF_RemoveActivePerson","The prisoner sobs until the very end.","defaultLeave:Leave.","You monster."
+PirateApologetic1Execute,DialogOptionSelected,"$option == PirateApologetic1Execute","FireBest COFF_ExecuteActivePerson","The prisoner sobs until the very end.","defaultLeave:Leave.","You monster."
 "#END Apologetic",,,,,,
 "#END Pirates",,,,,,
 ,,,,,,
@@ -180,12 +182,12 @@ OR
 $personName almost jumps as you offer this to them. In their mind your next words could've been anything, and it seemed the last thought they had was you offering them credits. Your security officer handles the rest as you head back up to the bridge.","defaultLeave:Good.",
 HegemonyScared1Ransom,DialogOptionSelected,"$option == HegemonyScared1Ransom","AddRemoveCommodity credits $coff_ransomprice true
 FireBest COFF_RemoveActivePerson","The prisoner, still shaking, is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.",,
-HegemonyScared1Release,DialogOptionSelected,"$option == HegemonyScared1Release","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id INHOSPITABLE 3","The prisoner, still shaking, gives you a nod as they enter the shuttle.
+HegemonyScared1Release,DialogOptionSelected,"$option == HegemonyScared1Release","FireBest COFF_ReleaseActivePerson","The prisoner, still shaking, gives you a nod as they enter the shuttle.
 
 ""Thank you for being one of the good ones, Captain. I'll see to it that people know what you did today.""","defaultLeave:Leave.",
-HegemonyScared1Execute,DialogOptionSelected,"$option == HegemonyScared1Execute","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id VENGEFUL -8","The prisoner is terrified for a brief moment, but that moment is all it takes for the life to leave $hisOrHer eyes.","defaultLeave:Leave.",
+HegemonyScared1Execute,DialogOptionSelected,"$option == HegemonyScared1Execute","FireBest COFF_RemoveActivePerson","The prisoner is terrified for a brief moment, but that moment is all it takes for the life to leave $hisOrHer eyes.","defaultLeave:Leave.",
+HegemonyScared1Executed,COFF_ExecutedPrisoner,"$coff_dialogtrigger == HegemonyScared1", "AdjustRep $personFaction.id VENGEFUL -8",,,
+HegemonyScared1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == HegemonyScared1", "AdjustRep $personFaction.id INHOSPITABLE 3",,,
 "#END Scared 1",,,,,,
 ,,,,,,
 # Idealistic 1,,,,,,
@@ -261,17 +263,19 @@ HegemonyIdealistic1PrisonerBluffNotHostile,HegemonyIdealistic1BluffSelected,"Rep
 HegemonyIdealistic1PrisonerBluffSuccess,HegemonyIdealistic1PrisonerBluffSuccess,,"FireBest COFF_HireActivePerson","$HeOrShe meets your gaze, takes your hand firmly, and slowly salutes you. ""I wouldn’t die for this sector, Captain, but I’ll fight for the one to come. I’ll follow you as long as it takes to lead this sector into the future.""","defaultLeave:Good.",
 HegemonyIdealistic1Ransom,DialogOptionSelected,"$option == HegemonyIdealistic1Ransom","AddRemoveCommodity credits $coff_ransomprice true
 FireBest COFF_RemoveActivePerson","$HeOrShe shoots you one last disapproving look before entering the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.",,
-HegemonyIdealistic1PrisonerRelease,DialogOptionSelected,"$option == HegemonyIdealistic1PrisonerRelease","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id INHOSPITABLE 3","$PersonRank $personLastName's defiant look turns to surprise as your security chief releases them. $HeOrShe massages $hisOrHer wrists briefly before making $hisOrHer way to the provided shuttle.
+HegemonyIdealistic1PrisonerRelease,DialogOptionSelected,"$option == HegemonyIdealistic1PrisonerRelease","FireBest COFF_ReleaseActivePerson","$PersonRank $personLastName's defiant look turns to surprise as your security chief releases them. $HeOrShe massages $hisOrHer wrists briefly before making $hisOrHer way to the provided shuttle.
 
 ""I can't say I'm not grateful, Captain. If our paths cross again, I'll remember this.""","defaultLeave:Leave.",
 HegemonyIdealistic1PrisonerReleaseBadBluff,DialogOptionSelected,"$option == HegemonyIdealistic1PrisonerRelease
-$coff_failedBluff","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id HOSTILE -6","$PersonRank $personLastName's defiant look remains as your security chief releases them. $HeOrShe makes $hisOrHer way quickly to the shuttle before giving you one last glance.
+$coff_failedBluff","FireBest COFF_ReleaseActivePerson","$PersonRank $personLastName's defiant look remains as your security chief releases them. $HeOrShe makes $hisOrHer way quickly to the shuttle before giving you one last glance.
 
 ""I will remember what you said to me, Captain. And everyone will know.""","defaultLeave:Leave.",
-HegemonyIdealistic1PrisonerExecute,DialogOptionSelected,"$option == HegemonyIdealistic1PrisonerExecute","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id VENGEFUL -8","$PersonRank $personLastName looks down briefly before lunging for you. Your security detail is prepared however, and pulse munitions end the $rank's short-lived resistance.","defaultLeave:Leave.",
+HegemonyIdealistic1PrisonerExecute,DialogOptionSelected,"$option == HegemonyIdealistic1PrisonerExecute","FireBest COFF_ExecuteActivePerson","$PersonRank $personLastName looks down briefly before lunging for you. Your security detail is prepared however, and pulse munitions end the $rank's short-lived resistance.","defaultLeave:Leave.",
+HegemonyIdealistic1Executed,COFF_ExecutedPrisoner,"$coff_dialogtrigger == HegemonyIdealistic1", "AdjustRep $personFaction.id VENGEFUL -8",,,
+HegemonyIdealistic1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == HegemonyIdealistic1
+!$coff_failedBluff", "AdjustRep $personFaction.id INHOSPITABLE 3",,,
+HegemonyIdealistic1ReleasedFailedBluff,COFF_ReleasedPrisoner,"$coff_dialogtrigger == HegemonyIdealistic1
+$coff_failedBluff", "AdjustRep $personFaction.id INHOSPITABLE -4",,,
 "#END Idealistic 1",,,,,,
 ,,,,,,
 # Dedicated 1,,,,,,
@@ -321,17 +325,14 @@ FireAll PopulatePrisonerOptions_HegemonyDedicated1","$HeOrShe scoffs at your off
 ""My loyalty is to my comrades alone, it cannot be purchased like supplies for your fleet.""",,"L"
 HegemonyDedicated1Ransom,DialogOptionSelected,"$option == HegemonyDedicated1Ransom","AddRemoveCommodity credits $coff_ransomprice true
 FireBest COFF_RemoveActivePerson","$HeOrShe is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.",,
-HegemonyDedicated1Release,DialogOptionSelected,"$option == HegemonyDedicated1Release","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id INHOSPITABLE 3","$PersonRank $personLastName's defiant look turns to surprise as your security chief releases them. $HeOrShe massages $hisOrHer wrists briefly before making $hisOrHer way to the provided shuttle.
+HegemonyDedicated1Release,DialogOptionSelected,"$option == HegemonyDedicated1Release","FireBest COFF_ReleaseActivePerson","$PersonRank $personLastName's defiant look turns to surprise as your security chief releases them. $HeOrShe massages $hisOrHer wrists briefly before making $hisOrHer way to the provided shuttle.
 
 ""I can't say I'm not grateful, Captain. If our paths cross again, I'll remember this.""","defaultLeave:Leave.",
-HegemonyDedicated1Execute,DialogOptionSelected,"$option == HegemonyDedicated1Execute","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id VENGEFUL -8","$PersonRank $personLastName looks down briefly before lunging for you. Your security detail is prepared however, and pulse munitions end $hisOrHer short-lived resistance.","defaultLeave:Leave.",
+HegemonyDedicated1Execute,DialogOptionSelected,"$option == HegemonyDedicated1Execute","FireBest COFF_ExecuteActivePerson","$PersonRank $personLastName looks down briefly before lunging for you. Your security detail is prepared however, and pulse munitions end $hisOrHer short-lived resistance.","defaultLeave:Leave.",
 HegemonyDedicated1ThreatenExecutionAltruist,DialogOptionSelected,"$option == HegemonyDedicated1ThreatenExecution","FireBest COFF_HireActivePerson","$PersonRank $personLastName looks defeated. $HeOrShe reluctantly submits to your command.
 
 Thanks to the need to know protocols on board your ship, $heOrShe isn't likely to know whether you actually had another prisoner affiliated with them, or what you're going to do with them if you did.","defaultLeave:Leave.",
-HegemonyDedicated1ThreatenExecutionViolent,DialogOptionSelected,"$option == HegemonyDedicated1ThreatenExecution","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id VENGEFUL -8
+HegemonyDedicated1ThreatenExecutionViolent,DialogOptionSelected,"$option == HegemonyDedicated1ThreatenExecution","FireBest COFF_ExecuteActivePerson
 AddRemoveCommodity crew -1 true","$PersonRank $personLastName lunges for you, but one of your security officers is able to tackle them. The prisoner wrestles the officer's sidearm free and executes him. The flash and sound of pulse munitions briefly fills the room, and $hisOrHer resistance is cut short.","defaultLeave:Leave.",
 HegemonyDedicated1ThreatenExecutionIndifferent,DialogOptionSelected,"$option == HegemonyDedicated1ThreatenExecution","$coff_threatenedAllyExecution = true
 FireAll PopulatePrisonerOptions_HegemonyDedicated1","$HeOrShe looks away from you for a brief moment, shaking $hisOrHer head.
@@ -342,12 +343,13 @@ $coff_allowedactions = ""talk,ransom""
 FireAll PopulatePrisonerOptions_HegemonyDedicated1","$HisOrHer face shows a sudden flash of anger before returning to the defiant gaze.
 
 ""I know who you are, $playerName. You murder our people by the hundreds, even thousands. They are as good as dead anyway.""",,
-HegemonyDedicated1ExecutionVengefulDeath,DialogOptionSelected,"$option == HegemonyDedicated1ViolentExecution","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id VENGEFUL -8
-AddRemoveCommodity crew -3 true
-","$PersonRank $personLastName lunges at you, grabbing your sidearm and pushing you to the floor. Your security detail isn't able to shoot until you deliver a fierce blow to $hisOrHer nose, knocking them to the floor. Flashes and sounds of pulse munitions fill the air, as the $personRank continues their final stand by knocking over a table. You are able to scramble out of the room under the covering fire of your security officers.
+HegemonyDedicated1ExecutionVengefulDeath,DialogOptionSelected,"$option == HegemonyDedicated1ViolentExecution","FireBest COFF_ExecuteActivePerson","$PersonRank $personLastName lunges at you, grabbing your sidearm and pushing you to the floor. Your security detail isn't able to shoot until you deliver a fierce blow to $hisOrHer nose, knocking them to the floor. Flashes and sounds of pulse munitions fill the air, as the $personRank continues their final stand by knocking over a table. You are able to scramble out of the room under the covering fire of your security officers.
 
 A well placed shot eventually ends the standoff violently. Three of your security officers have taken lethal injuries, and aren't able to be saved.","defaultLeave:Leave.",
+HegemonyDedicated1ExecutedVengeful,COFF_ExecutedPrisoner,"$coff_dialogtrigger == HegemonyDedicated1
+$coff_threatenedAllyExecutionVengeful == true","AddRemoveCommodity crew -3 true",,,"This technically can't happen as the rules are currently set up."
+HegemonyDedicated1Executed,COFF_ExecutedPrisoner,"$coff_dialogtrigger == HegemonyDedicated1","AdjustRep $personFaction.id VENGEFUL -8",,,
+HegemonyDedicated1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == HegemonyDedicated1", "AdjustRep $personFaction.id INHOSPITABLE 3",,,
 "#END Dedicated 1",,,,,,
 "#END Hegemony",,,,,,
 ,,,,,,
@@ -375,12 +377,12 @@ TriTachGreedy1ExecuteOption,PopulatePrisonerOptions_TriTachGreedy1,,,,"TriTachGr
 TriTachGreedy1LeaveOption,PopulatePrisonerOptions_TriTachGreedy1,,,,"defaultLeave:Leave",
 TriTachGreedy1Bribe,DialogOptionSelected,"$option == TriTachGreedy1Bribe","AddRemoveCommodity credits -$coff_bribeprice true
 FireBest COFF_HireActivePerson","A simple flick of your Tri-Pad is all it takes to pay the price requested by $name. Your security officer looks at you briefly. You give a silent nod to them as if to say that you are aware this is a risky investment, and they release $himOrHer from the prison and into your command.","defaultLeave:Good.",
-TriTachGreedy1Release,DialogOptionSelected,"$option == TriTachGreedy1Release","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id INHOSPITABLE 3","$name gives you a gleeful look as $heOrShe is escorted to the shuttle.
+TriTachGreedy1Release,DialogOptionSelected,"$option == TriTachGreedy1Release","FireBest COFF_ReleaseActivePerson","$name gives you a gleeful look as $heOrShe is escorted to the shuttle.
 
 ""Thank you for your time, Captain. The stay was exquisite, although your food could use a bit more spice.""","defaultLeave:Leave.",
-TriTachGreedy1Execute,DialogOptionSelected,"$option == TriTachGreedy1Execute","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id VENGEFUL -4","The prisoner is terrified for a brief moment, but that moment is all it takes for the life to leave $hisOrHer eyes.","defaultLeave:Leave.",
+TriTachGreedy1Execute,DialogOptionSelected,"$option == TriTachGreedy1Execute","FireBest COFF_ExecuteActivePerson","The prisoner is terrified for a brief moment, but that moment is all it takes for the life to leave $hisOrHer eyes.","defaultLeave:Leave.",
+TriTachGreedy1Executed,COFF_ExecutedPrisoner,"$coff_dialogtrigger == TriTachGreedy1","AdjustRep $personFaction.id VENGEFUL -4",,,
+TriTachGreedy1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == TriTachGreedy1", "AdjustRep $personFaction.id INHOSPITABLE 3",,,
 "#END Greedy 1",,,,,,
 ,,,,,,
 # Indebted 1,,,,,,
@@ -403,9 +405,8 @@ TriTachIndebted1ExecuteOptionUnknown,PopulatePrisonerOptions_TriTachIndebted1,"!
 TriTachIndebted1ExecuteOptionKnown,PopulatePrisonerOptions_TriTachIndebted1,"$coff_pried
 !$coff_tookloan","SetTooltip TriTachIndebted1Execute ""The official who gave the prisoner the loan will not be happy about this.""",,"4:TriTachIndebted1Execute:Execute $himOrHer.",
 TriTachIndebted1ExecuteOptionTookLoan,PopulatePrisonerOptions_TriTachIndebted1,"$coff_tookloan score:10",,,"4:TriTachIndebted1Execute:Execute $himOrHer.",
-TriTachIndebted1Execute,DialogOptionSelected,"$option == TriTachIndebted1Execute","FireBest COFF_ExecuteActivePerson
-AdjustRep $personFaction.id VENGEFUL -4","The prisoner accepts their fate, and leaves this life peacefully.","defaultLeave:Leave.",
-TriTachIndebted1Release,DialogOptionSelected,"$option == TriTachIndebted1Release","FireBest COFF_RemoveActivePerson","The prisoner is escorted to the shuttle, which takes off shortly after $heOrShe enters it.","defaultLeave:Leave.",
+TriTachIndebted1Execute,DialogOptionSelected,"$option == TriTachIndebted1Execute","FireBest COFF_ExecuteActivePerson","The prisoner accepts their fate, and leaves this life peacefully.","defaultLeave:Leave.",
+TriTachIndebted1Release,DialogOptionSelected,"$option == TriTachIndebted1Release","FireBest COFF_ReleaseActivePerson","The prisoner is escorted to the shuttle, which takes off shortly after $heOrShe enters it.","defaultLeave:Leave.",
 TriTachIndebted1TakeLoan,DialogOptionSelected,"$option == TriTachIndebted1TakeLoan","$coff_tookloan = true
 COFF_AddRandomTriTachyonLoan
 CallEvent $coff_loanIntel putValuesInMemory
@@ -437,8 +438,10 @@ COFF_SendRelentlessBountyHunters tritachyon","You extend your hand out to $himOr
 
 $personName has gained an extra level.","defaultLeave:Good.",
 TriTachIndebted1Back,DialogOptionSelected,"$option == TriTachIndebted1Back","FireAll PopulatePrisonerOptions_TriTachIndebted1","You tell $himOrHer that you'll take some time to think about it.",,
-TriTachIndebted1Executed,COFF_Executed,"$coff_dialogtrigger == TriTachIndebted1
+TriTachIndebted1Executed,COFF_ExecutedPrisoner,"$coff_dialogtrigger == TriTachIndebted1","AdjustRep $personFaction.id VENGEFUL -4",,,
+TriTachIndebted1ExecutedWithoutLoan,COFF_ExecutedPrisoner,"$coff_dialogtrigger == TriTachIndebted1
 !$coff_tookloan","COFF_SendRelentlessBountyHunters tritachyon",,,
+TriTachIndebted1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == TriTachIndebted1", "AdjustRep $personFaction.id INHOSPITABLE 3",,,
 "#END Indebted 1",,,,,,
 "#END Tri-Tachyon",,,,,,
 ,,,,,,
@@ -465,16 +468,16 @@ FireAll PopulatePrisonerOptions_SindrianLoyalist1","The Sindrian Diktat officer 
 ""My loyalty is not for sale, you degenerate!"" The Officer shouts, holding whatever air of authority $heOrShe can muster despite the situation. ""Only in death shall sever my service to the Lion!""",,
 SindrianLoyalist1Ransom,DialogOptionSelected,"$option == SindrianLoyalist1Ransom","AddRemoveCommodity credits $coff_ransomprice true
 FireBest COFF_RemoveActivePerson","$HeOrShe is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds for the officer.",,
-SindrianLoyalist1Release,DialogOptionSelected,"$option == SindrianLoyalist1Release","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id INHOSPITABLE 3","$HeOrShe gives you one last fierce look as $heOrShe enters the waiting shuttle.
+SindrianLoyalist1Release,DialogOptionSelected,"$option == SindrianLoyalist1Release","FireBest COFF_ReleaseActivePerson","$HeOrShe gives you one last fierce look as $heOrShe enters the waiting shuttle.
 
 ""This doesn't mean you've seen the last of the Lion. Continue your criminal actions against it and you will face its wrath again!""","defaultLeave:Leave.",
-SindrianLoyalist1Execute,DialogOptionSelected,"$option == SindrianLoyalist1Execute","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id VENGEFUL -6","As you order the execution of the prisoner, the $PersonRank stares at you defiantly.
+SindrianLoyalist1Execute,DialogOptionSelected,"$option == SindrianLoyalist1Execute","FireBest COFF_ExecuteActivePerson","As you order the execution of the prisoner, the $PersonRank stares at you defiantly.
 
 ""My death shall be but a stepping down for the Lion! May my life ensure that scum like you will face their judg-""
 
 A deafening boom is enough to silence the officer as $heOrShe slumps over. You shake your head as you turn away, leaving the body to be disposed of by your crew.","defaultLeave:Leave.",
+SindrianLoyalist1Executed,COFF_ExecutedPrisoner,"$coff_dialogtrigger == SindrianLoyalist1","AdjustRep $personFaction.id VENGEFUL -6",,,
+SindrianLoyalist1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == SindrianLoyalist1", "AdjustRep $personFaction.id INHOSPITABLE 3",,,
 "#END Loyalist 1",,,,,,
 ,,,,,,
 # Unloyalist 1,,,,,,
@@ -502,18 +505,18 @@ After letting the officer calm down, you allow your security team to brief the o
 SindrianUnloyalist1RansomFirst,DialogOptionSelected,"$option == SindrianUnloyalist1Ransom","FireAll PopulatePrisonerOptions_SindrianUnloyalist1_Ransom","""N-no, no! I c-can't go back! They're gonna kill me... they're gonna kill me!""
 The officer begins rocking back and forth as they keep incoherently talking to themself.
 ""Gonna kill me, they're gonna kill me!""",,
-SindrianUnloyalist1RansomDeny,DialogOptionSelected,"$option == SindrianUnloyalist1RansomDeny"," FireAll PopulatePrisonerOptions_SindrianUnloyalist1","""Not... going back to Askonia?""
+SindrianUnloyalist1RansomDeny,DialogOptionSelected,"$option == SindrianUnloyalist1RansomDeny","FireAll PopulatePrisonerOptions_SindrianUnloyalist1","""Not... going back to Askonia?""
 
 The officer seems to calm down, though it seems clear that they don't want to be sent back to $thePersonFaction.",,
-SindrianUnloyalist1RansomConfirm,DialogOptionSelected,"$option == SindrianUnloyalist1RansomConfirm"," AddRemoveCommodity credits $coff_ransomprice true
+SindrianUnloyalist1RansomConfirm,DialogOptionSelected,"$option == SindrianUnloyalist1RansomConfirm","AddRemoveCommodity credits $coff_ransomprice true
 FireBest COFF_RemoveActivePerson","""N-no... NO! YOU CAN'T SENT ME BACK. THEY'RE GOING TO KILL ME!""
 
 The officer screams and roars, thrashing about their cell. It takes a few of your crew to subdue them, and after managing to knock the officer unconscious, you have your crew bring the officer to a waiting shuttle directed back to the Diktat.","defaultLeave:Leave.",
-SindrianUnloyalist1Release,DialogOptionSelected,"$option == SindrianUnloyalist1Release","FireBest COFF_RemoveActivePerson","""Y-you're letting me go? J-just like that? Not back to A-Askonia?""
+SindrianUnloyalist1Release,DialogOptionSelected,"$option == SindrianUnloyalist1Release","FireBest COFF_ReleaseActivePerson","""Y-you're letting me go? J-just like that? Not back to A-Askonia?""
 
 The officer is a bit worried at first, but after you calmly inform $himOrHer that $heOrShe is not going back to Askonia, $heOrShe seems relieved. Your guards then proceed to escort the officer off to a waiting shuttle.","defaultLeave:Leave.",
-SindrianUnloyalist1Execute,DialogOptionSelected,"$option == SindrianUnloyalist1Execute","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id VENGEFUL -6","The Diktat officer barely has a chance to notice one of your guard's weapons being pointed at $himOrHer before the deed is done, leaving your crew with a body to dispose of.","defaultLeave:Leave.",
+SindrianUnloyalist1Execute,DialogOptionSelected,"$option == SindrianUnloyalist1Execute","FireBest COFF_ExecuteActivePerson","The Diktat officer barely has a chance to notice one of your guard's weapons being pointed at $himOrHer before the deed is done, leaving your crew with a body to dispose of.","defaultLeave:Leave.",
+SindrianUnloyalist1Executed,COFF_ExecutedPrisoner,"$coff_dialogtrigger == SindrianUnloyalist1","AdjustRep $personFaction.id VENGEFUL -6",,,
 "#END Unloyalist 1",,,,,,
 "#END Sindrian Diktat",,,,,,
 ,,,,,,
@@ -615,13 +618,12 @@ LeagueSnobbish1Ransom,DialogOptionSelected,"$option == LeagueSnobbish1Ransom","A
 FireBest COFF_RemoveActivePerson","$HeOrShe is escorted to the shuttle. $HeOrShe gives you one last look and says ""Here's to the stars, captain.""
 
 As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.","defaultLeave:Leave.",
-LeagueSnobbish1Release,DialogOptionSelected,"$option == LeagueSnobbish1Release","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id INHOSPITABLE 3","The prisoner makes their way to the shuttle and gives you a last appraising glance.
+LeagueSnobbish1Release,DialogOptionSelected,"$option == LeagueSnobbish1Release","FireBest COFF_ReleaseActivePerson","The prisoner makes their way to the shuttle and gives you a last appraising glance.
 
 ""Here's to the stars, captain."" $HeOrShe then closes the shuttle doors.
 ","defaultLeave:Leave.",
-LeagueSnobbish1Execute,DialogOptionSelected,"$option == LeagueSnobbish1Execute","FireBest COFF_RemoveActivePerson
-AdjustRep $personFaction.id VENGEFUL -8","The prisoner closes their eyes for a brief moment and sighs. $HisOrHer life ends in a couple moments.","defaultLeave:Leave.",
+LeagueSnobbish1Execute,DialogOptionSelected,"$option == LeagueSnobbish1Execute","FireBest COFF_ExecuteActivePerson","The prisoner closes their eyes for a brief moment and sighs. $HisOrHer life ends in a couple moments.","defaultLeave:Leave.",
+LeagueSnobbish1Executed,COFF_ExecutedPrisoner,"$coff_dialogtrigger == LeagueSnobbish1","AdjustRep $personFaction.id VENGEFUL -8",,,
+LeagueSnobbish1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == LeagueSnobbish1", "AdjustRep $personFaction.id INHOSPITABLE 3",,,
 "#END Snobbish 1",,,,,,
 "#END Persean League",,,,,,
-

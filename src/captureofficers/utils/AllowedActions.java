@@ -3,7 +3,9 @@ package captureofficers.utils;
 import captureofficers.ui.PrisonersDialogDelegate;
 import com.fs.starfarer.api.characters.PersonAPI;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class AllowedActions {
     public static Set<String> get(PersonAPI person) {

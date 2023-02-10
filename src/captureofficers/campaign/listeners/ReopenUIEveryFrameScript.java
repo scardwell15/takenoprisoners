@@ -4,7 +4,6 @@ import captureofficers.CaptureOfficers;
 import captureofficers.ui.ViewPrisonersUI;
 import com.fs.starfarer.api.EveryFrameScript;
 import com.fs.starfarer.api.Global;
-import com.fs.starfarer.api.impl.campaign.RuleBasedInteractionDialogPluginImpl;
 
 public class ReopenUIEveryFrameScript implements EveryFrameScript {
     private boolean started = false;

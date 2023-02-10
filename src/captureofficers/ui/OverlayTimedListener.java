@@ -1,7 +1,6 @@
 package captureofficers.ui;
 
 import captureofficers.utils.RenderUtils;
-import com.fs.starfarer.api.campaign.CustomUIPanelPlugin;
 import com.fs.starfarer.api.ui.PositionAPI;
 
 import java.awt.*;

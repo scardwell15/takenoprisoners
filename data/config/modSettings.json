@@ -1,71 +1,57 @@
 {
-    "TakeNoPrisoners": {
-        #setting this too high may permanently brick your save at some point in the future
-        #if you then ping me about your save being bricked, you get added to the wall of shame
-        "maxPrisoners": 15,
+  "TakeNoPrisoners": {
+    #setting this too high may permanently brick your save at some point in the future
+    #if you then ping me about your save being bricked, you get added to the wall of shame
+    "maxPrisoners": 15,
     
-        #wall of shame:
-        #tim (lmao)
+    #wall of shame:
+    #tim (lmao)
 
-        #valid values are ALL and OFFICERS_ONLY, which blocks fleet commanders.
-        "factionCapturability": {
-            "tritachyon": "ALL",
-            "hegemony": "ALL",
-            "ironshell": "ALL",
-            "persean_league": "ALL",
-            "pirates": "ALL",
-            "independent": "ALL",
-            "sindrian_diktat": "ALL",
-            "lions_guard": "ALL",
-            "tahlan_legioinfernalis": "OFFICERS_ONLY",
-            "unknown": "OFFICERS_ONLY",
-            "luddic_church": "ALL",
-            "luddic_path": "ALL",
-            "approlight": "ALL",
-            "almighty_dollar": "ALL",
-            "ashen_keepers": "ALL",
-            "communist_clouds": "ALL",
-            "hvb_hostile": "ALL",
-            "wanted": "ALL",
-            "science_fuckers": "ALL",
-            "warhawk_republic": "ALL",
-            "vic": "ALL",
-            "Goat_Aviation_Bureau": "ALL",
-            "mayasura": "ALL",
-            "mayasuran_guard": "ALL",
-            "orks": "ALL",
-            "roider": "ALL",
-            "scy": "ALL",
-            "diable_avionics": "ALL",
-            "ora": "ALL",
-            "kadur_remnant": "ALL",
-            "kadur_theocracy": "ALL",
-            "qamar_insurgency": "ALL",
-            "gmda": "ALL",
-            "MVS": "ALL",
-            "kyeltziv": "ALL",
-            "apex_design": "ALL",
-            "sikr_saniris": "ALL",
-            "pearson_exotronics": "ALL",
-            "brighton": "ALL",
-            "hmi": "ALL",
-            "dassault_mikoyan": "ALL",
-            "blackrock_driveyards": "ALL",
-            "interstellarimperium": "ALL",
-            "neutrinocorp": "ALL"
-        },
-        #factions that do not accept ransoms
-        "factionRansomBlacklist": [
-            "luddic_path",
-            "pirates",
-            "pirate",
-            "cabal",
-            "gmda",
-            "gmda_patrol",
-            "orks",
-            "wanted",
-            "hvb_hostile"
-        ],
-        "baseCaptureChance": 0.5
-    }
+    "factionsWithConfigs": [
+      "tritachyon",
+      "hegemony",
+      "ironshell",
+      "persean_league",
+      "pirates",
+      "independent",
+      "sindrian_diktat",
+      "lions_guard",
+      "tahlan_legioinfernalis",
+      "unknown",
+      "luddic_church",
+      "luddic_path",
+      "approlight",
+      "almighty_dollar",
+      "ashen_keepers",
+      "communist_clouds",
+      "hvb_hostile",
+      "wanted",
+      "science_fuckers",
+      "warhawk_republic",
+      "vic",
+      "Goat_Aviation_Bureau",
+      "mayasura",
+      "mayasuran_guard",
+      "orks",
+      "roider",
+      "scy",
+      "diable_avionics",
+      "ora",
+      "kadur_remnant",
+      "kadur_theocracy",
+      "qamar_insurgency",
+      "gmda",
+      "MVS",
+      "kyeltziv",
+      "apex_design",
+      "sikr_saniris",
+      "pearson_exotronics",
+      "brighton",
+      "hmi",
+      "dassault_mikoyan",
+      "blackrock_driveyards",
+      "interstellarimperium",
+      "neutrinocorp"
+    ]
+  }
 }

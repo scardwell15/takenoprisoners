@@ -1,15 +1,13 @@
 package captureofficers.campaign.actions.definitions;
 
-import captureofficers.campaign.actions.definitions.steps.*;
-import captureofficers.utils.AllowedActions;
-import captureofficers.utils.Settings;
+import captureofficers.campaign.actions.definitions.steps.FireAllTrigger;
+import captureofficers.campaign.actions.definitions.steps.HirePerson;
+import captureofficers.campaign.actions.definitions.steps.RemovePerson;
 import captureofficers.utils.StringUtils;
-import captureofficers.utils.Strings;
 import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.ui.ButtonAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
-import com.fs.starfarer.api.util.Misc;
 
 import java.awt.*;
 import java.util.LinkedHashSet;

@@ -1,7 +1,6 @@
 package captureofficers.campaign.rulecmd;
 
 import captureofficers.campaign.actions.definitions.ExecuteDefinition;
-import captureofficers.campaign.actions.definitions.ReleaseDefinition;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.InteractionDialogAPI;
 import com.fs.starfarer.api.campaign.rules.MemoryAPI;

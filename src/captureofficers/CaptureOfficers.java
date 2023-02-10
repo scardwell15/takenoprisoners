@@ -108,7 +108,7 @@ public class CaptureOfficers extends BaseModPlugin {
     }
 
     public static void addPerson(PersonAPI person) {
-        addPerson(person, false);
+        addPerson(person, person.hasTag(Strings.FORCE_CAPTURE_TAG));
     }
 
     public static void removePerson(PersonAPI person) {

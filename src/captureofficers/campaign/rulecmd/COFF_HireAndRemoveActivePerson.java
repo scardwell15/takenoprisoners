@@ -1,7 +1,6 @@
 package captureofficers.campaign.rulecmd;
 
 import captureofficers.campaign.actions.definitions.HireDefinition;
-import captureofficers.campaign.actions.definitions.ReleaseDefinition;
 import captureofficers.ui.PrisonersDialogDelegate;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.InteractionDialogAPI;

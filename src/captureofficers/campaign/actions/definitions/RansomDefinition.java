@@ -3,8 +3,9 @@ package captureofficers.campaign.actions.definitions;
 import captureofficers.campaign.actions.definitions.steps.NearFactionMarket;
 import captureofficers.campaign.actions.definitions.steps.RemovePerson;
 import captureofficers.campaign.actions.definitions.steps.TakeCredits;
+import captureofficers.config.FactionConfig;
+import captureofficers.config.FactionConfigLoaderKt;
 import captureofficers.utils.AllowedActions;
-import captureofficers.utils.Settings;
 import captureofficers.utils.StringUtils;
 import captureofficers.utils.Strings;
 import com.fs.starfarer.api.campaign.InteractionDialogAPI;
@@ -40,7 +41,8 @@ public class RansomDefinition extends StepExecutor {
 
     @Override
     public boolean canShow(PersonAPI person) {
-        if (Settings.doesFactionRansom(person.getFaction().getId()) && AllowedActions.contains(person, this)) {
+        FactionConfig config = FactionConfigLoaderKt.getFactionConfig(person);
+        if ((config == null || config.getAcceptsRansoms()) && AllowedActions.contains(person, this)) {
             return super.canShow(person);
         }
         return false;
@@ -78,7 +80,7 @@ public class RansomDefinition extends StepExecutor {
 
     @Override
     public Color getAfterClickRowColor(PersonAPI person) {
-        return new Color(180,168,100);
+        return new Color(180, 168, 100);
     }
 
     @Override

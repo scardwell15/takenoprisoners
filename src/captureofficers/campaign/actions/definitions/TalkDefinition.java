@@ -1,8 +1,8 @@
 package captureofficers.campaign.actions.definitions;
 
 import captureofficers.campaign.listeners.ReopenUIEveryFrameScript;
+import captureofficers.config.FactionConfigLoaderKt;
 import captureofficers.ui.PrisonersDialogDelegate;
-import captureofficers.utils.Settings;
 import captureofficers.utils.StringUtils;
 import captureofficers.utils.Strings;
 import com.fs.starfarer.api.Global;
@@ -11,17 +11,13 @@ import com.fs.starfarer.api.characters.PersonAPI;
 import com.fs.starfarer.api.characters.PersonalityAPI;
 import com.fs.starfarer.api.impl.campaign.RuleBasedInteractionDialogPluginImpl;
 import com.fs.starfarer.api.impl.campaign.ids.Personalities;
-import com.fs.starfarer.api.impl.campaign.rulecmd.FireAll;
-import com.fs.starfarer.api.impl.campaign.rulecmd.FireBest;
 import com.fs.starfarer.api.ui.ButtonAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
-import data.scripts.util.MagicSettings;
 import org.apache.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class TalkDefinition extends PrisonersDialogDelegate.ActionDefinitionImpl {
     private Logger log = Logger.getLogger(TalkDefinition.class);
@@ -60,7 +56,7 @@ public class TalkDefinition extends PrisonersDialogDelegate.ActionDefinitionImpl
         Global.getSector().getCampaignUI().getCurrentInteractionDialog().dismiss();
         person.getMemoryWithoutUpdate().set(Strings.IS_PRISONER_MEMKEY, true);
         person.getMemoryWithoutUpdate().set(Strings.PERSONALITY_DEGREE_MEMKEY, getPersonalityDegree(person.getPersonalityAPI()));
-        person.getMemoryWithoutUpdate().set(Strings.RANSOMABLE, Settings.doesFactionRansom(person.getFaction().getId()));
+        person.getMemoryWithoutUpdate().set(Strings.RANSOMABLE, FactionConfigLoaderKt.getFactionConfig(person).getAcceptsRansoms());
         Global.getSector().addScript(new EndedConvoEveryFrameScript(person));
     }
 

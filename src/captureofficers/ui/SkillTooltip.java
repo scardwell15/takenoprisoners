@@ -2,10 +2,12 @@ package captureofficers.ui;
 
 import captureofficers.utils.SkillsUtil;
 import captureofficers.utils.StringUtils;
-import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.characters.*;
 import com.fs.starfarer.api.impl.campaign.ids.Skills;
-import com.fs.starfarer.api.ui.*;
+import com.fs.starfarer.api.ui.BaseTooltipCreator;
+import com.fs.starfarer.api.ui.LabelAPI;
+import com.fs.starfarer.api.ui.TooltipMakerAPI;
+import com.fs.starfarer.api.ui.UIComponentAPI;
 import com.fs.starfarer.api.util.Misc;
 
 import java.awt.*;
