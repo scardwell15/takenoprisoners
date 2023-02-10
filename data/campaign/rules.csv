@@ -12,7 +12,7 @@ COFF_HireActivePerson,COFF_HireActivePerson,,"COFF_HireActivePerson",,,"Hires th
 COFF_RemoveActivePerson,COFF_RemoveActivePerson,,"COFF_RemoveActivePerson",,,"Removes the active person from the ""prison""."
 COFF_HireAndRemoveActivePerson,COFF_HireAndRemoveActivePerson,,"COFF_HireAndRemoveActivePerson",,,"Hires the active person as an officer, and removes them from the ""prison"". Calls the trigger COFF_HiredPrisoner"
 COFF_ExecuteActivePerson,COFF_ExecuteActivePerson,,"COFF_ExecuteActivePerson",,,"Removes the active person from the ""prison"". Calls the trigger COFF_ExecutedPrisoner"
-COFF_RemoveActivePerson,COFF_RemoveActivePerson,,"COFF_RemoveActivePerson",,,"Removes the active person from the ""prison"". Calls the trigger COFF_ReleasedPrisoner"
+COFF_ReleaseActivePerson,COFF_ReleaseActivePerson,,"COFF_ReleaseActivePerson",,,"Removes the active person from the ""prison"". Calls the trigger COFF_ReleasedPrisoner"
 ,,,,,,
 # Any Faction,,,,,,
 ,,,,,,
