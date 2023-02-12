@@ -3,5 +3,6 @@
   "capturesCommanders": true,
   "acceptsRansoms": false,
   "captureChance": 0.03,
-  "sendsVengeanceFleets": true
+  "sendsVengeanceFleets": true,
+  "vengeancePointThreshold": 5,
 }

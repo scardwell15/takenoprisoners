@@ -27,5 +27,8 @@
     "LevelText": "Level ${level}, ${personality}",
     "FactionText": "${factionName} ${rank}",
     "EliteSkill": "Elite"
+  },
+  "VengeanceFleet": {
+    "NotificationText": "Your crimes against ${factionId} have not gone unnoticed."
   }
 }

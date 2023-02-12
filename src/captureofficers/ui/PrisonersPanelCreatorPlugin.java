@@ -44,8 +44,8 @@ public class PrisonersPanelCreatorPlugin implements InteractionDialogPlugin {
             }
         }
 
-        float screenWidth = Math.min(Display.getWidth(), 1280);
-        float screenHeight = Math.min(Display.getHeight(), 768);
+        float screenWidth = Global.getSettings().getScreenWidth();
+        float screenHeight = Global.getSettings().getScreenHeight();
 
         float allRowsHeight = (PRISONER_ROW_SIZE + 10) * persons.size() + 3;
 

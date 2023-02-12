@@ -11,10 +11,10 @@ $coff_dialogpicked","FireBest StartPrisonerDialog",,,
 COFF_HireActivePerson,COFF_HireActivePerson,,"COFF_HireActivePerson",,,"Hires the active person as an officer. Calls the trigger COFF_HiredPrisoner"
 COFF_RemoveActivePerson,COFF_RemoveActivePerson,,"COFF_RemoveActivePerson",,,"Removes the active person from the ""prison""."
 COFF_HireAndRemoveActivePerson,COFF_HireAndRemoveActivePerson,,"COFF_HireAndRemoveActivePerson",,,"Hires the active person as an officer, and removes them from the ""prison"". Calls the trigger COFF_HiredPrisoner"
-COFF_ExecuteActivePerson,COFF_ExecuteActivePerson,,"COFF_ExecuteActivePerson",,,"Removes the active person from the ""prison"". Calls the trigger COFF_ExecutedPrisoner"
+COFF_ExecuteActivePerson,COFF_ExecuteActivePerson,,"COFF_ExecuteActivePerson",,,"Removes the active person from the ""prison"". Calls the trigger COFF_ExecutedPrisoner."
 COFF_ReleaseActivePerson,COFF_ReleaseActivePerson,,"COFF_ReleaseActivePerson",,,"Removes the active person from the ""prison"". Calls the trigger COFF_ReleasedPrisoner"
 ,,,,,,
-# Any Faction,,,,,,
+# Any Faction Prisoner Dialogs,,,,,,
 ,,,,,,
 # Prisoner 1,,,,,,
 PickPrisonerDialogDefault1,PickPrisonerDialog,,"$coff_dialogtrigger = Default1
@@ -627,3 +627,22 @@ LeagueSnobbish1Executed,COFF_ExecutedPrisoner,"$coff_dialogtrigger == LeagueSnob
 LeagueSnobbish1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == LeagueSnobbish1", "AdjustRep $personFaction.id INHOSPITABLE 3",,,
 "#END Snobbish 1",,,,,,
 "#END Persean League",,,,,,
+,,,,,,
+# Any Faction Vengeance Fleets
+,,,,,,
+COFFVengeancePointExecution,COFF_ExecutedPrisoner,,"COFF_AddVengeancePoint",,,
+VengeanceFleetGreetingDefault,OpenCommLink,"$entity.coff_vengeanceFleet score:101",$ignorePlayerCommRequests = true 1,"The enemy $personRank gives you an aggressive glare.
+
+""You may be skilled as a fleet commander, but today your crimes caught up to you. I can only hope that I'm the one to put you down, just as you put down many of my comrades.""",cutCommLink:Cut the comm link,
+VengeanceFleetTriTachyon,OpenCommLink,"$entity.coff_vengeanceFleet score:101
+$faction.id == tritachyon",$ignorePlayerCommRequests = true 1,"The $personRank raises a wine glass to you before placing it back down on the console.
+
+""You've made quite the splash at Tri-Tachyon, captain. Unfortunately for you, you've also been deemed a liability.""",cutCommLink:Cut the comm link,
+VengeanceFleetLuddicPath,OpenCommLink,"$entity.coff_vengeanceFleet score:101
+$faction.id == luddic_path",$ignorePlayerCommRequests = true 1,"The pather shoots you a rapturous glare, rising out of their seat.
+
+""You have lost your way, captain. In these final moments, pray that you may be forgiven by Him, because I will not.""",cutCommLink:Cut the comm link,
+VengeanceFleetPirates,OpenCommLink,"$entity.coff_vengeanceFleet score:101
+$faction.id == pirates",$ignorePlayerCommRequests = true 1,"The pirate is laughing as $heOrShe appears on screen, probably from a joke made by one of the others in the bridge. $HeOrShe turns to you, a smile still on their face.
+
+""Honestly, I didn't even want to come out here. But orders are orders, and some pirate lord wants you dead. At least make it entertaining, yeah?""",cutCommLink:Cut the comm link,

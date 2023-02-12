@@ -19,6 +19,8 @@ class FactionConfig(var factionId: String, loadFromJson: Boolean) {
     var acceptsRansoms = true
     var captureChance = 0.5f
     var sendsVengeanceFleets = true
+    var vengeancePointThreshold = 8
+    var vengeanceFleetStrength = 0.75f
     var commanderForcedCapture = true
 
     init {
@@ -46,5 +48,7 @@ class FactionConfig(var factionId: String, loadFromJson: Boolean) {
         acceptsRansoms = settings.optBoolean("acceptsRansoms", acceptsRansoms)
         captureChance = settings.optFloat("captureChance", captureChance)
         sendsVengeanceFleets = settings.optBoolean("sendsVengeanceFleets", sendsVengeanceFleets)
+        vengeancePointThreshold = settings.optInt("vengeancePointThreshold", vengeancePointThreshold)
+        vengeanceFleetStrength = settings.optFloat("vengeanceFleetStrength", vengeanceFleetStrength)
     }
 }

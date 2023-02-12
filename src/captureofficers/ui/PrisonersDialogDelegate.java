@@ -186,7 +186,7 @@ public class PrisonersDialogDelegate implements CustomDialogDelegate {
             button.setEnabled(choice.canUse(member));
             choice.generatedButton(buttonHolder, button, member);
 
-            buttons.add(new ButtonData(choice, member, button, rowTooltip));
+            buttons.add(new ButtonData(dialog, choice, member, button, rowTooltip));
 
             if (index >= columnLength) {
                 columnXOffset += (64 + 3);
@@ -373,29 +373,34 @@ public class PrisonersDialogDelegate implements CustomDialogDelegate {
     }
 
     public static class ButtonData {
+        private final InteractionDialogAPI dialog;
         private final ActionDefinition action;
         private final PersonAPI person;
         private ButtonAPI button = null;
         private TooltipMakerAPI row = null;
 
-        public ButtonData(ActionDefinition action, PersonAPI person) {
+        public ButtonData(InteractionDialogAPI dialog, ActionDefinition action, PersonAPI person) {
+            this.dialog = dialog;
             this.action = action;
             this.person = person;
         }
 
-        public ButtonData(ActionDefinition action, PersonAPI person, ButtonAPI button) {
+        public ButtonData(InteractionDialogAPI dialog, ActionDefinition action, PersonAPI person, ButtonAPI button) {
+            this.dialog = dialog;
             this.action = action;
             this.person = person;
             this.button = button;
         }
 
-        public ButtonData(ActionDefinition action, PersonAPI person, TooltipMakerAPI row) {
+        public ButtonData(InteractionDialogAPI dialog, ActionDefinition action, PersonAPI person, TooltipMakerAPI row) {
+            this.dialog = dialog;
             this.action = action;
             this.person = person;
             this.row = row;
         }
 
-        public ButtonData(ActionDefinition action, PersonAPI person, ButtonAPI button, TooltipMakerAPI row) {
+        public ButtonData(InteractionDialogAPI dialog, ActionDefinition action, PersonAPI person, ButtonAPI button, TooltipMakerAPI row) {
+            this.dialog = dialog;
             this.action = action;
             this.person = person;
             this.button = button;
@@ -427,7 +432,10 @@ public class PrisonersDialogDelegate implements CustomDialogDelegate {
         }
 
         public void execute() {
+            PersonAPI activePerson = this.dialog.getInteractionTarget().getActivePerson();
+            this.dialog.getInteractionTarget().setActivePerson(person);
             this.action.execute(person);
+            this.dialog.getInteractionTarget().setActivePerson(activePerson);
         }
 
         @Override

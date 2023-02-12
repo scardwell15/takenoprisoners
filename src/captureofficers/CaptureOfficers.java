@@ -1,5 +1,6 @@
 package captureofficers;
 
+import captureofficers.campaign.VengeanceFleetHandler;
 import captureofficers.campaign.listeners.CampaignListener;
 import captureofficers.utils.Settings;
 import captureofficers.utils.Strings;
@@ -38,6 +39,7 @@ public class CaptureOfficers extends BaseModPlugin {
     public void onGameLoad(boolean newGame) {
         Settings.reloadSettings();
         registerListener();
+        VengeanceFleetHandler.INSTANCE.loadVengeancePoints();
 
         if (!Global.getSector().getCharacterData().getAbilities().contains("viewprisoners")) {
             Global.getSector().getCharacterData().addAbility("viewprisoners");
