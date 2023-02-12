@@ -4,7 +4,7 @@ import captureofficers.campaign.actions.definitions.steps.NearFactionMarket;
 import captureofficers.campaign.actions.definitions.steps.RemovePerson;
 import captureofficers.campaign.actions.definitions.steps.TakeCredits;
 import captureofficers.config.FactionConfig;
-import captureofficers.config.FactionConfigLoaderKt;
+import captureofficers.config.FactionConfigLoader;
 import captureofficers.utils.AllowedActions;
 import captureofficers.utils.StringUtils;
 import captureofficers.utils.Strings;
@@ -41,7 +41,7 @@ public class RansomDefinition extends StepExecutor {
 
     @Override
     public boolean canShow(PersonAPI person) {
-        FactionConfig config = FactionConfigLoaderKt.getFactionConfig(person);
+        FactionConfig config = FactionConfigLoader.getFactionConfig(person.getFaction().getId());
         if ((config == null || config.getAcceptsRansoms()) && AllowedActions.contains(person, this)) {
             return super.canShow(person);
         }

@@ -1,7 +1,8 @@
 package captureofficers.campaign.actions.definitions;
 
 import captureofficers.campaign.listeners.ReopenUIEveryFrameScript;
-import captureofficers.config.FactionConfigLoaderKt;
+import captureofficers.config.FactionConfig;
+import captureofficers.config.FactionConfigLoader;
 import captureofficers.ui.PrisonersDialogDelegate;
 import captureofficers.utils.StringUtils;
 import captureofficers.utils.Strings;
@@ -13,14 +14,12 @@ import com.fs.starfarer.api.impl.campaign.RuleBasedInteractionDialogPluginImpl;
 import com.fs.starfarer.api.impl.campaign.ids.Personalities;
 import com.fs.starfarer.api.ui.ButtonAPI;
 import com.fs.starfarer.api.ui.TooltipMakerAPI;
-import org.apache.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class TalkDefinition extends PrisonersDialogDelegate.ActionDefinitionImpl {
-    private Logger log = Logger.getLogger(TalkDefinition.class);
 
     public TalkDefinition(InteractionDialogAPI dialog) {
         super(dialog);
@@ -54,9 +53,12 @@ public class TalkDefinition extends PrisonersDialogDelegate.ActionDefinitionImpl
     @Override
     public void execute(PersonAPI person) {
         Global.getSector().getCampaignUI().getCurrentInteractionDialog().dismiss();
+
+        FactionConfig config = FactionConfigLoader.getFactionConfig(person.getFaction().getId());
+
         person.getMemoryWithoutUpdate().set(Strings.IS_PRISONER_MEMKEY, true);
         person.getMemoryWithoutUpdate().set(Strings.PERSONALITY_DEGREE_MEMKEY, getPersonalityDegree(person.getPersonalityAPI()));
-        person.getMemoryWithoutUpdate().set(Strings.RANSOMABLE, FactionConfigLoaderKt.getFactionConfig(person).getAcceptsRansoms());
+        person.getMemoryWithoutUpdate().set(Strings.RANSOMABLE, config != null && config.getAcceptsRansoms());
         Global.getSector().addScript(new EndedConvoEveryFrameScript(person));
     }
 
