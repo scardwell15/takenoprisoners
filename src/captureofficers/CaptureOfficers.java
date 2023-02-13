@@ -23,6 +23,7 @@ public class CaptureOfficers extends BaseModPlugin {
     @Override
     public void onNewGameAfterEconomyLoad() {
         registerListener();
+        checkAbility();
     }
 
     @Override
@@ -41,21 +42,37 @@ public class CaptureOfficers extends BaseModPlugin {
         registerListener();
         VengeanceFleetHandler.INSTANCE.loadVengeancePoints();
 
+        checkAbility();
+    }
+
+    public void checkAbility() {
+        if (!Global.getSector().getCharacterData().getMemoryWithoutUpdate().contains("$ability:viewprisoners")) {
+            Global.getSector().getCharacterData().getMemoryWithoutUpdate().set("$ability:viewprisoners", true, 0);
+        }
+
+        if (Global.getSector().getPlayerFleet() == null) return;
+
         if (!Global.getSector().getCharacterData().getAbilities().contains("viewprisoners")) {
             Global.getSector().getCharacterData().addAbility("viewprisoners");
+        }
+
+        if (!Global.getSector().getPlayerFleet().getAbilities().containsKey("viewprisoners")) {
             Global.getSector().getPlayerFleet().addAbility("viewprisoners");
-            Global.getSector().getCharacterData().getMemoryWithoutUpdate().set("$ability:viewprisoners", true, 0);
         }
     }
 
     private void registerListener() {
-        listener = new CampaignListener(false);
-        Global.getSector().addListener(listener);
+        if (listener == null || !Global.getSector().getListenerManager().hasListener(CampaignListener.class)) {
+            listener = new CampaignListener(false);
+            Global.getSector().addListener(listener);
+        }
     }
 
     private void removeListener() {
-        Global.getSector().removeListener(listener);
-        listener = null;
+        if (listener != null) {
+            Global.getSector().removeListener(listener);
+            listener = null;
+        }
     }
 
     public static String getPersistentDataId() {
