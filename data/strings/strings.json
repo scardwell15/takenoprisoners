@@ -23,6 +23,7 @@
     "OutputText": "You gave ${credits} credits to hire the officer."
   },
   "PrisonerUI": {
+    "AbilityDesc": "Decide how to handle captured officers.",
     "Title": "Prisoners",
     "LevelText": "Level ${level}, ${personality}",
     "FactionText": "${factionName} ${rank}",

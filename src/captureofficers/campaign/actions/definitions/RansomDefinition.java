@@ -87,7 +87,7 @@ public class RansomDefinition extends StepExecutor {
     public String getAfterClickDisplayText(PersonAPI person) {
         int credits = getCreditGain(person);
 
-        return StringUtils.getTranslation("BribeMethod", "OutputText")
+        return StringUtils.getTranslation("RansomMethod", "OutputText")
                 .format("credits", credits)
                 .toStringNoFormats();
     }

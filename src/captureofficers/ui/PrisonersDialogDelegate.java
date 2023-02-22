@@ -4,6 +4,7 @@ import captureofficers.CaptureOfficers;
 import captureofficers.campaign.actions.definitions.*;
 import captureofficers.utils.AllowedActions;
 import captureofficers.utils.StringUtils;
+import captureofficers.utils.Strings;
 import com.fs.starfarer.api.Global;
 import com.fs.starfarer.api.campaign.CustomDialogDelegate;
 import com.fs.starfarer.api.campaign.CustomUIPanelPlugin;
@@ -17,12 +18,14 @@ import com.fs.starfarer.api.ui.*;
 import com.fs.starfarer.api.util.Misc;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.apache.log4j.Logger;
 
 import java.awt.*;
 import java.util.List;
 import java.util.*;
 
 public class PrisonersDialogDelegate implements CustomDialogDelegate {
+    private static Logger log = Logger.getLogger(PrisonersDialogDelegate.class);
     private static PrisonersDialogDelegate inst = null;
 
     public static PrisonersDialogDelegate getInst() {
@@ -327,8 +330,14 @@ public class PrisonersDialogDelegate implements CustomDialogDelegate {
         Iterator<ActionDefinition> defIterator = defs.iterator();
         while (defIterator.hasNext()) {
             ActionDefinition def = defIterator.next();
-            if (!AllowedActions.contains(person, def, def.mustBeAllowed())
-                    || !def.canShow(person)) {
+
+            boolean allowed = AllowedActions.contains(person, def, def.mustBeAllowed());
+            boolean canShow = def.canShow(person);
+
+            log.info(String.format("name = %s allowed = %s canShow = %s", person.getNameString(), allowed, canShow));
+            log.info(String.format("allowedActions = %s", person.getMemoryWithoutUpdate().getString(Strings.ALLOWED_ACTIONS_MEMKEY)));
+
+            if (!allowed || !canShow) {
                 defIterator.remove();
             }
         }

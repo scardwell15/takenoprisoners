@@ -45,8 +45,7 @@ FireBest COFF_HireActivePerson","A simple flick of your Tri-Pad is all it takes 
 Default1PrisonerRelease,DialogOptionSelected,"$option == Default1PrisonerRelease","FireBest COFF_RemoveActivePerson","The prisoner almost looks smug as $heOrShe is escorted to the shuttle.
 
 ""Be seeing you again soon, $player.name. Real soon.""","defaultLeave:Leave.",
-Default1PrisonerExecute,DialogOptionSelected,"$option == Default1PrisonerExecute","FireBest COFF_ExecuteeActivePerson
-AdjustRep $personFaction.id VENGEFUL -8","The prisoner is terrified for a brief moment, but that moment is all it takes for the life to leave $hisOrHer eyes.","defaultLeave:Leave.",
+Default1PrisonerExecute,DialogOptionSelected,"$option == Default1PrisonerExecute","FireBest COFF_ExecuteActivePerson","The prisoner is terrified for a brief moment, but that moment is all it takes for the life to leave $hisOrHer eyes.","defaultLeave:Leave.",
 Default1PrisonerRansom,DialogOptionSelected,"$option == Default1PrisonerRansom","FireBest COFF_RemoveActivePerson
 AddRemoveCommodity credits $coff_ransomprice true","The prisoner is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping notifying you of your ransom pay.","defaultLeave:Good.",
 Default1PrisonerExecuted,COFF_ExecutedPrisoner,"$coff_dialogtrigger == Default1", "AdjustRep $personFaction.id VENGEFUL -8",,,
@@ -181,11 +180,11 @@ OR
 
 $personName almost jumps as you offer this to them. In their mind your next words could've been anything, and it seemed the last thought they had was you offering them credits. Your security officer handles the rest as you head back up to the bridge.","defaultLeave:Good.",
 HegemonyScared1Ransom,DialogOptionSelected,"$option == HegemonyScared1Ransom","AddRemoveCommodity credits $coff_ransomprice true
-FireBest COFF_RemoveActivePerson","The prisoner, still shaking, is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.",,
+FireBest COFF_RemoveActivePerson","The prisoner, still shaking, is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.","defaultLeave:Leave.",
 HegemonyScared1Release,DialogOptionSelected,"$option == HegemonyScared1Release","FireBest COFF_ReleaseActivePerson","The prisoner, still shaking, gives you a nod as they enter the shuttle.
 
 ""Thank you for being one of the good ones, Captain. I'll see to it that people know what you did today.""","defaultLeave:Leave.",
-HegemonyScared1Execute,DialogOptionSelected,"$option == HegemonyScared1Execute","FireBest COFF_RemoveActivePerson","The prisoner is terrified for a brief moment, but that moment is all it takes for the life to leave $hisOrHer eyes.","defaultLeave:Leave.",
+HegemonyScared1Execute,DialogOptionSelected,"$option == HegemonyScared1Execute","FireBest COFF_ExecuteActivePerson","The prisoner is terrified for a brief moment, but that moment is all it takes for the life to leave $hisOrHer eyes.","defaultLeave:Leave.",
 HegemonyScared1Executed,COFF_ExecutedPrisoner,"$coff_dialogtrigger == HegemonyScared1", "AdjustRep $personFaction.id VENGEFUL -8",,,
 HegemonyScared1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == HegemonyScared1", "AdjustRep $personFaction.id INHOSPITABLE 3",,,
 "#END Scared 1",,,,,,
@@ -262,7 +261,7 @@ FireAll PopulatePrisonerOptions_HegemonyIdealistic1","""You aren't trying to ret
 HegemonyIdealistic1PrisonerBluffNotHostile,HegemonyIdealistic1BluffSelected,"RepIsAtWorst $personFaction.id INHOSPITABLE","FireBest HegemonyIdealistic1PrisonerBluffSuccess",,,
 HegemonyIdealistic1PrisonerBluffSuccess,HegemonyIdealistic1PrisonerBluffSuccess,,"FireBest COFF_HireActivePerson","$HeOrShe meets your gaze, takes your hand firmly, and slowly salutes you. ""I wouldn’t die for this sector, Captain, but I’ll fight for the one to come. I’ll follow you as long as it takes to lead this sector into the future.""","defaultLeave:Good.",
 HegemonyIdealistic1Ransom,DialogOptionSelected,"$option == HegemonyIdealistic1Ransom","AddRemoveCommodity credits $coff_ransomprice true
-FireBest COFF_RemoveActivePerson","$HeOrShe shoots you one last disapproving look before entering the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.",,
+FireBest COFF_RemoveActivePerson","$HeOrShe shoots you one last disapproving look before entering the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.",defaultLeave:Good.,
 HegemonyIdealistic1PrisonerRelease,DialogOptionSelected,"$option == HegemonyIdealistic1PrisonerRelease","FireBest COFF_ReleaseActivePerson","$PersonRank $personLastName's defiant look turns to surprise as your security chief releases them. $HeOrShe massages $hisOrHer wrists briefly before making $hisOrHer way to the provided shuttle.
 
 ""I can't say I'm not grateful, Captain. If our paths cross again, I'll remember this.""","defaultLeave:Leave.",
@@ -324,7 +323,7 @@ HegemonyDedicated1Bribe,DialogOptionSelected,"$option == HegemonyDedicated1Bribe
 FireAll PopulatePrisonerOptions_HegemonyDedicated1","$HeOrShe scoffs at your offer.
 ""My loyalty is to my comrades alone, it cannot be purchased like supplies for your fleet.""",,"L"
 HegemonyDedicated1Ransom,DialogOptionSelected,"$option == HegemonyDedicated1Ransom","AddRemoveCommodity credits $coff_ransomprice true
-FireBest COFF_RemoveActivePerson","$HeOrShe is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.",,
+FireBest COFF_RemoveActivePerson","$HeOrShe is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds from the Hegemony for the officer.","defaultLeave:Good.",
 HegemonyDedicated1Release,DialogOptionSelected,"$option == HegemonyDedicated1Release","FireBest COFF_ReleaseActivePerson","$PersonRank $personLastName's defiant look turns to surprise as your security chief releases them. $HeOrShe massages $hisOrHer wrists briefly before making $hisOrHer way to the provided shuttle.
 
 ""I can't say I'm not grateful, Captain. If our paths cross again, I'll remember this.""","defaultLeave:Leave.",
@@ -359,7 +358,7 @@ HegemonyDedicated1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == Hegemon
 PickPrisonerDialogTriTachGreedy1,PickPrisonerDialog,"$personFaction.id == tritachyon
 COFF_RandomChance 20","$coff_dialogtrigger = TriTachGreedy1
 COFF_CalcBribePrice 2
-$coff_allowedactions = ""talk,bribe,release,ransom,execute""",,,"Tri-Tachyon official looking to make a deal."
+$coff_allowedactions = ""talk,bribe,release,execute""",,,"Tri-Tachyon official looking to make a deal."
 OpenPrisonerDialogTriTachGreedy1,StartPrisonerDialog,"$coff_dialogtrigger == TriTachGreedy1 score:100
 !$coff_metprisoner","$coff_metprisoner = true
 FireAll PopulatePrisonerOptions_TriTachGreedy1","$personName looks up at you, and a smile grows on $hisOrHer face. $HeOrShe looks you confidently in the eyes.
@@ -388,7 +387,7 @@ TriTachGreedy1Released,COFF_ReleasedPrisoner,"$coff_dialogtrigger == TriTachGree
 # Indebted 1,,,,,,
 PickPrisonerDialogTriTachIndebted1,PickPrisonerDialog,"$personFaction.id == tritachyon
 COFF_RandomChance 20","$coff_dialogtrigger = TriTachIndebted1
-$coff_allowedactions = ""talk,release,ransom,execute""",,,"Tri-Tachyon-affiliate indebted to an official."
+$coff_allowedactions = ""talk,release,execute""",,,"Tri-Tachyon-affiliate indebted to an official."
 OpenPrisonerDialogTriTachIndebted1,StartPrisonerDialog,"$coff_dialogtrigger == TriTachIndebted1 score:100","FireAll PopulatePrisonerOptions_TriTachIndebted1","$personName looks up at you, a stressed look on $hisOrHer face. $HeOrShe opens their mouth to speak, then looks back down, defeated.",,
 TriTachIndebted1PryOption,PopulatePrisonerOptions_TriTachIndebted1,"!$coff_pried",,,"1:TriTachIndebted1Pry:Ask $himOrHer what is troubling them.",
 TriTachIndebted1Pry,DialogOptionSelected,"$option == TriTachIndebted1Pry","$coff_pried = true
@@ -467,7 +466,7 @@ FireAll PopulatePrisonerOptions_SindrianLoyalist1","The Sindrian Diktat officer 
 
 ""My loyalty is not for sale, you degenerate!"" The Officer shouts, holding whatever air of authority $heOrShe can muster despite the situation. ""Only in death shall sever my service to the Lion!""",,
 SindrianLoyalist1Ransom,DialogOptionSelected,"$option == SindrianLoyalist1Ransom","AddRemoveCommodity credits $coff_ransomprice true
-FireBest COFF_RemoveActivePerson","$HeOrShe is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds for the officer.",,
+FireBest COFF_RemoveActivePerson","$HeOrShe is escorted to the shuttle. As it leaves weapons range of your fleet, you hear a ping from your Tri-Pad indicating that you've received the ransom funds for the officer.","defaultLeave:Good.",
 SindrianLoyalist1Release,DialogOptionSelected,"$option == SindrianLoyalist1Release","FireBest COFF_ReleaseActivePerson","$HeOrShe gives you one last fierce look as $heOrShe enters the waiting shuttle.
 
 ""This doesn't mean you've seen the last of the Lion. Continue your criminal actions against it and you will face its wrath again!""","defaultLeave:Leave.",

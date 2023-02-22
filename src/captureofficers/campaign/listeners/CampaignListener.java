@@ -36,17 +36,13 @@ public class CampaignListener extends BaseCampaignEventListener {
 
         if (loserSide.getAllEverDeployedCopy() == null) return;
 
+        FactionConfig config = FactionConfigLoader.getFactionConfig(loserSide.getFleet().getFaction().getId());
+        if (config == null) return;
+
         log.info("Capture - Engagement ended. Processing enemy fleet now.");
 
-        FactionConfig config = FactionConfigLoader.getFactionConfig(loserSide.getFleet().getFaction().getId());
 
         PersonAPI fleetCommander = loserSide.getFleet().getCommander();
-        if (config != null && config.getCommanderForcedCapture()) {
-            if (canCapture(fleetCommander, config, true)) {
-                log.info("Capture - Added enemy fleet commander as prisoner.");
-                CaptureOfficers.addPerson(fleetCommander);
-            }
-        }
 
         if (loserSide.getFleet().getMemoryWithoutUpdate().contains(Strings.ENEMY_FLEET_PRISONERS_MEMKEY)) {
             List<PersonAPI> persons = (List<PersonAPI>) loserSide.getFleet().getMemoryWithoutUpdate().get(Strings.ENEMY_FLEET_PRISONERS_MEMKEY);
@@ -64,24 +60,24 @@ public class CampaignListener extends BaseCampaignEventListener {
 
             PersonAPI captain = member.getCaptain();
 
+            float recoveryChance = config.getCaptureChance();
+            if (loserSide.getDestroyed().contains(member)) {
+                recoveryChance *= 0.5f;
+            } else if (loserSide.getRetreated().contains(member)) {
+                recoveryChance *= 0f;
+            }
+
             boolean isCommander = captain.equals(fleetCommander);
-            if (config == null || (config.getCommanderForcedCapture() && !isCommander)) {
-                if (canCapture(captain, config, isCommander)) {
+            if (canCapture(captain, config, isCommander)) {
+                if ((isCommander && config.getCommanderForcedCapture() && recoveryChance > 0f)
+                        || Math.random() <= recoveryChance) {
 
-                    float recoveryChance = 0.1f;
-                    if (config != null) {
-                        recoveryChance = config.getCaptureChance();
-                    }
-                    if (loserSide.getDestroyed().contains(member)) {
-                        recoveryChance *= 0.5f;
-                    } else if (loserSide.getRetreated().contains(member)) {
-                        recoveryChance *= 0f;
-                    }
-
-                    if (Math.random() <= recoveryChance) {
+                    if (isCommander) {
+                        log.info("Capture - Added enemy fleet commander as prisoner.");
+                    } else {
                         log.info("Capture - Added enemy officer as prisoner.");
-                        CaptureOfficers.addPerson(captain);
                     }
+                    CaptureOfficers.addPerson(captain);
                 }
             }
         }

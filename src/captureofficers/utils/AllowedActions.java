@@ -32,7 +32,7 @@ public class AllowedActions {
     }
 
     public static void add(PersonAPI person, PrisonersDialogDelegate.ActionDefinition def) {
-        add(person, def.getButtonText());
+        add(person, def.getId());
     }
 
     public static void add(PersonAPI person, String... defNames) {
@@ -75,7 +75,7 @@ public class AllowedActions {
     }
 
     public static boolean contains(PersonAPI person, PrisonersDialogDelegate.ActionDefinition def, boolean mustContain) {
-        return contains(person, def.getButtonText(), mustContain);
+        return contains(person, def.getId(), mustContain);
     }
 
     public static boolean contains(PersonAPI person, String defName) {
@@ -83,6 +83,6 @@ public class AllowedActions {
     }
 
     public static boolean contains(PersonAPI person, PrisonersDialogDelegate.ActionDefinition def) {
-        return contains(person, def.getButtonText(), false);
+        return contains(person, def.getId(), false);
     }
 }
