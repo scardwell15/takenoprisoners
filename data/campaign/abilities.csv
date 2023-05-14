@@ -1,2 +1,2 @@
 name,id,type,tags,activationDays,activationCooldown,durationDays,deactivationDays,deactivationCooldown,unlockedAtStart,defaultForAIFleet,musicSuppression,uiOn,uiOff,uiLoop,worldOn,worldOff,worldLoop,icon,plugin,ai,desc,sortOrder
-View Prisoners,viewprisoners,DURATION,,0,0.25,0,0,0.25,TRUE,,,ui_scavenge_on,,,,,,graphics/icons/cargo/crew3.png,captureofficers.campaign.abilities.ViewPrisonersAbility,,Decide how to handle captured officers.,9300
+View Prison,viewprisoners,DURATION,,0,0.25,0,0,0.25,TRUE,,,ui_scavenge_on,,,,,,graphics/icons/cargo/crew03.png,takenoprisoners.campaign.abilities.ViewPrisonAbility,,Decide how to handle captured officers.,9300

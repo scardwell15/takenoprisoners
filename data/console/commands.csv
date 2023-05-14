@@ -1,2 +1,2 @@
 command,class,tags,syntax,help
-tnp_addprisoner,captureofficers.console.AddPrisoner,"dialog,campaign,market",tnp_addprisoner <factionId>,"Adds a prisoner of the desired faction."
+tnp_addprisoner,takenoprisoners.console.AddPrisoner,"dialog,campaign,market",tnp_addprisoner <factionId>,"Adds a prisoner of the desired faction."
