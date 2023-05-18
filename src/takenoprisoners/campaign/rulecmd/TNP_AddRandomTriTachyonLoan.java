@@ -13,7 +13,7 @@ import com.fs.starfarer.api.util.Misc;
 import java.util.List;
 import java.util.Map;
 
-public class TNP_AddRandomTriTachyonLoan extends BaseCommandPlugin {
+public class TNP_AddRandomTriTachyonLoan extends TNPCommandPlugin {
     @Override
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
         MarketAPI targetMarket = TNP_GetRandomCloseMarketForFaction.get(Factions.TRITACHYON);
@@ -27,7 +27,7 @@ public class TNP_AddRandomTriTachyonLoan extends BaseCommandPlugin {
         TriTachLoanIntel intel = new TriTachLoanIntel(event, targetMarket);
         Global.getSector().getIntelManager().addIntel(intel, false, dialog.getTextPanel());
 
-        dialog.getInteractionTarget().getActivePerson().getMemoryWithoutUpdate().set("$coff_loanIntel", intel);
+        getActivePerson(dialog).getMemoryWithoutUpdate().set("$coff_loanIntel", intel);
         return true;
     }
 

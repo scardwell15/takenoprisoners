@@ -3,7 +3,7 @@
 	"name":"Take No Prisoners", # Displayed to the player
 	"author":"President Matt Damon",
     "utility":"false",
-	"version":"0.16.0",
+	"version":"0.16.1",
 	"description":"Capture officers and negotiate",
     "gameVersion": "0.96a",
   	"jars":["jars/TakeNoPrisoners.jar"],

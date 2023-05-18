@@ -11,11 +11,10 @@ import com.fs.starfarer.api.util.Misc;
 import java.util.List;
 import java.util.Map;
 
-public class TNP_HireActivePerson extends BaseCommandPlugin {
+public class TNP_HireActivePerson extends TNPCommandPlugin {
     @Override
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
-        PersonAPI person = Global.getSector().getPlayerFleet().getActivePerson();
-        new HireAction(dialog).execute(person);
+        new HireAction(dialog).execute(getActivePerson(dialog));
 
         return true;
     }

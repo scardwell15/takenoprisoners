@@ -205,7 +205,6 @@ public class PrisonersDialogDelegate implements CustomDialogDelegate {
     }
 
     public void removePerson(PersonAPI person, ActionDefinition displayedAction) {
-        TakeNoPrisonersModPlugin.removePerson(person);
         members.remove(person);
 
         ButtonData deletedData = null;

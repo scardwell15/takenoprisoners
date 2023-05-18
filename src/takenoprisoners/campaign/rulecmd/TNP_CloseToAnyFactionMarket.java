@@ -11,10 +11,10 @@ import com.fs.starfarer.api.util.Misc;
 import java.util.List;
 import java.util.Map;
 
-public class TNP_CloseToAnyFactionMarket extends BaseCommandPlugin {
+public class TNP_CloseToAnyFactionMarket extends TNPCommandPlugin {
     @Override
     public boolean execute(String ruleId, InteractionDialogAPI dialog, List<Misc.Token> params, Map<String, MemoryAPI> memoryMap) {
-        PersonAPI person = Global.getSector().getPlayerFleet().getActivePerson();
+        PersonAPI person = getActivePerson(dialog);
         String factionId = person.getFaction().getId();
         for (MarketAPI market : Misc.getFactionMarkets(factionId)) {
             if (market.isInvalidMissionTarget()) continue;
